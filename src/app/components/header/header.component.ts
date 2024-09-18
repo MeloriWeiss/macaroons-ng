@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'header-component',
@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() orderBlock: HTMLElement | null = null;
+
   public phone: string = '+375 (29) 368-98-68';
 
   public openMenu(menu: HTMLElement) {
@@ -20,5 +22,9 @@ export class HeaderComponent implements OnInit {
 
   public closeMenu(menu: HTMLElement) {
     menu.classList.remove('open');
+  }
+
+  public scrollToOrder() {
+    this.orderBlock?.scrollIntoView({behavior: "smooth"});
   }
 }
