@@ -1,1 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: GilroyBold;
+  src: url("assets/fonts/gilroy-bold.ttf");
+}
+
+@font-face {
+  font-family: GilroyExtraBold;
+  src: url("assets/fonts/gilroy-extrabold.ttf");
+}
+
+@font-face {
+  font-family: GilroyMedium;
+  src: url("assets/fonts/gilroy-medium.ttf");
+}
+
+@font-face {
+  font-family: GilroyRegular;
+  src: url("assets/fonts/gilroy-regular.ttf");
+}
+
+@font-face {
+  font-family: Tavolga;
+  src: url("assets/fonts/tavolga-free.ttf");
+}
+
+body {
+  font-family: Tavolga, sans-serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.button {
+  font-size: 18px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(0deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92) 100%);
+  border: 0;
+  line-height: 1;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 15;
+}
+
+.button:hover {
+  box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
+}
+
+.phone {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+}
+
+.logo {
+  font-size: 0;
+}
+
+@media screen and (max-width: 1330px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .logo {
+    display: inline-block;
+    font-size: 0;
+    vertical-align: middle;
+  }
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .phone {
+    display: none;
+  }
+}

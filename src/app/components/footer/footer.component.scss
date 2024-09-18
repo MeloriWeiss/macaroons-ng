@@ -1,0 +1,62 @@
+.footer {
+  background: #c0707c;
+  padding-top: 73px;
+  padding-bottom: 62px;
+}
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo-rights {
+  display: grid;
+  grid-template-rows: auto auto;
+  width: 169px;
+}
+
+.rights {
+  font-size: 12px;
+  font-family: GilroyRegular, sans-serif;
+  color: rgb(227, 172, 180);
+  margin-top: 19px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-rows: auto auto;
+  width: 119px;
+  justify-items: center;
+}
+
+.footer-links svg {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-icon-link {
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.footer-links svg g {
+  fill: white;
+}
+
+.rights-extra {
+  display: none;
+}
+
+.phone-extra {
+  display: none;
+}

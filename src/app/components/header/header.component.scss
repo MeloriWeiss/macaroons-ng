@@ -1,0 +1,45 @@
+.header {
+  background: #eba8b1;
+  padding: 37px 0 24px;
+  font-size: 0;
+}
+
+.close {
+  display: none;
+}
+
+.header-trigram {
+  display: none;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0;
+}
+
+.header-menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 313px;
+}
+
+.header-menu ul li {
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.header-menu ul li:hover {
+  border-bottom: 1px solid #821328;
+}
+
+.header-menu ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: GilroyMedium, sans-serif;
+  color: rgb(119, 11, 29);
+}
