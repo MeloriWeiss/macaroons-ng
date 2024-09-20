@@ -11,8 +11,10 @@ export class AppComponent {
   public values = {
     productInCart: '',
   }
+  public phone: string = '+375 (29) 368-98-68';
+  public instagramLink: string = '#';
 
-  public advantages = [
+  public ourAdvantages = [
     {
       title: 'Лучшие продукты',
       description: `Мы честно готовим макаруны только из натуральных и качественных продуктов. Мы не используем
@@ -69,5 +71,13 @@ export class AppComponent {
   public addToOrder(target: HTMLElement, product: MacaroonType): void {
     this.scrollTo(target);
     this.values.productInCart = product.title.toUpperCase();
+  }
+
+  public openMenu(menu: HTMLElement) {
+    menu.classList.add('open');
+  }
+
+  public closeMenu(menu: HTMLElement) {
+    menu.classList.remove('open');
   }
 }

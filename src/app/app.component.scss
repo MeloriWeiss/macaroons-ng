@@ -1,3 +1,52 @@
+.header {
+  background: #eba8b1;
+  padding: 37px 0 24px;
+  font-size: 0;
+}
+
+.close {
+  display: none;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0;
+}
+
+.header-menu ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 313px;
+}
+
+.header-menu ul li {
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  list-style: none;
+  transition: all 0.3s ease;
+}
+
+.header-menu ul li:hover {
+  border-bottom: 1px solid #821328;
+}
+
+.header-menu ul li a {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: GilroyMedium, sans-serif;
+  color: rgb(119, 11, 29);
+}
+
+.phone {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
 .main {
   background: #eba8b1;
   padding-top: 127px;
@@ -317,6 +366,61 @@
   animation: strawberry-info-anim 3s infinite linear;
 }
 
+.footer {
+  background: #c0707c;
+  padding-top: 73px;
+  padding-bottom: 62px;
+}
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-logo-rights {
+  display: grid;
+  grid-template-rows: auto auto;
+  width: 169px;
+}
+
+.rights {
+  font-size: 12px;
+  font-family: GilroyRegular, sans-serif;
+  color: rgb(227, 172, 180);
+  margin-top: 19px;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-rows: auto auto;
+  width: 119px;
+  justify-items: center;
+}
+
+.footer-links svg {
+  width: 35px;
+  height: 35px;
+}
+
+.footer-icon-link {
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer-links a {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.footer-links svg g {
+  fill: white;
+}
+
 .main-image {
   position: relative;
 }
@@ -332,7 +436,7 @@
   height: 90px;
   background-image: radial-gradient(#71081e 0%, #d7485c 100%);
   transition: all 0.5s ease;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -373,10 +477,6 @@
   left: 170px;
 }
 
-.present.show {
-  display: flex;
-}
-
 .main-image::before {
   content: '';
   position: absolute;
@@ -402,6 +502,18 @@
   animation: circle-anim 3s infinite;
   animation-delay: 500ms;
   z-index: 10;
+}
+
+.header-trigram {
+  display: none;
+}
+
+.rights-extra {
+  display: none;
+}
+
+.phone-extra {
+  display: none;
 }
 
 @keyframes circle-anim {
