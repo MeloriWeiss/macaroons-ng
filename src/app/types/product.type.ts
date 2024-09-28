@@ -1,6 +1,6 @@
-export type MacaroonType = {
+export type ProductType = {
   image: string,
   title: string,
   count: number,
-  price: string,
+  price: number,
 }

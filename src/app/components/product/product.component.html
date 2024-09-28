@@ -1,0 +1,17 @@
+<div class="product-item">
+  <div class="product-image">
+    <img src="assets/images/{{ product.image }}" alt="Макарун {{ index + 1 }}">
+  </div>
+  <div class="product-title">
+    <h3>{{ product.title }}</h3>
+  </div>
+  <div class="product-order">
+    <div class="product-count">
+      {{ product.count }} шт.
+    </div>
+    <button class="button product-button" customButton [customButtonBg]="'#821328'" [customButtonBgHover]="'#69101f'" (click)="addToCart()">Заказать</button>
+    <div class="product-price">
+      {{ product.price | currency : 'руб.' }}
+    </div>
+  </div>
+</div>

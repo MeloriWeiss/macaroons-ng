@@ -1,83 +1,49 @@
-import {Component} from '@angular/core';
-import {MacaroonType} from "./types/macaroon.type";
+import {Component, OnInit} from '@angular/core';
+import {ProductType} from "./types/product.type";
+import {ProductService} from "./services/product.service";
+import {CartService} from "./services/cart.service";
+import {AdvantageService} from "./services/advantage.service";
+import {AdvantageType} from "./types/advantage.type";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss', './app-adaptive.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  public showPresent: boolean = true;
-  public values = {
+export class AppComponent implements OnInit {
+  showPresent: boolean = true;
+  values = {
     productInCart: '',
   }
-  public phone: string = '+375 (29) 368-98-68';
-  public instagramLink: string = '#';
+  phoneNumber: string = '375293689868';
 
-  public ourAdvantages = [
-    {
-      title: 'Лучшие продукты',
-      description: `Мы честно готовим макаруны только из натуральных и качественных продуктов. Мы не используем
-          консерванты, ароматизаторы и красители.`,
-    },
-    {
-      title: 'Много вкусов',
-      description: `Наша задача – предоставить вам широкое разнобразие вкусов. Вы удивитесь, но у нас более 70
-          вкусов пироженок.`,
-    },
-    {
-      title: 'Бисквитное тесто',
-      description: `Все пирожные готовятся на бисквитном тесте с качественным сливочным маслом 82,5%. В составе нет
-          маргарина и дрожжей!`,
-    },
-    {
-      title: 'Честный продукт',
-      description: `Вкус, качество и безопасность наших пирогов подтверждена декларацией о соответствии, которую мы
-          получили 22.06.2016 г.`,
-    },
-  ];
+  ourAdvantages: AdvantageType[] = [];
+  productItems: ProductType[] = [];
+  orderProductsCount: number = 0;
+  orderAmount: number = 0;
+  constructor(private productService: ProductService,
+              private cartService: CartService,
+              private advantageService: AdvantageService) {
+    this.orderProductsCount = this.cartService.orderCountProducts;
+    this.orderAmount = this.cartService.orderAmount;
+  }
 
-  public productItems = [
-    {
-      image: 'macaroon1.png',
-      title: 'Макарун с малиной',
-      count: 1,
-      price: '1.70',
-    },
-    {
-      image: 'macaroon2.png',
-      title: 'Макарун с манго',
-      count: 1,
-      price: '1.70',
-    },
-    {
-      image: 'macaroon3.png',
-      title: 'Пирог с малиной',
-      count: 1,
-      price: '1.70',
-    },
-    {
-      image: 'macaroon4.png',
-      title: 'Пирог с фисташками',
-      count: 1,
-      price: '1.70',
-    }
-  ];
+  ngOnInit() {
+    this.productItems = this.productService.getProducts();
+    this.ourAdvantages = this.advantageService.getAdvantages();
+  }
 
-  public scrollTo(target: HTMLElement): void {
+  scrollTo(target: HTMLElement): void {
     target.scrollIntoView({behavior: "smooth"});
   }
 
-  public addToOrder(target: HTMLElement, product: MacaroonType): void {
+  addToOrder(target: HTMLElement, product: ProductType): void {
+    alert(`${product.title} добавлен в корзину!`);
+    this.cartService.orderCountProducts++;
+    this.cartService.orderAmount += product.price;
+    this.orderProductsCount = this.cartService.orderCountProducts;
+    this.orderAmount = this.cartService.orderAmount;
     this.scrollTo(target);
     this.values.productInCart = product.title.toUpperCase();
-  }
-
-  public openMenu(menu: HTMLElement) {
-    menu.classList.add('open');
-  }
-
-  public closeMenu(menu: HTMLElement) {
-    menu.classList.remove('open');
   }
 }

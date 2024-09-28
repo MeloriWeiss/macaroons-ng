@@ -1,38 +1,4 @@
-<header class="header">
-  <div class="container">
-    <a href="#" class="logo">
-      <img src="assets/images/logo.png" alt="Логотип">
-    </a>
-    <nav class="header-menu" id="menu" #menu (click)="closeMenu(menu)">
-      <ul>
-        <li>
-          <a href="#" (click)="scrollTo(chooseMacaroon)">Пироженки</a>
-        </li>
-        <li>
-          <a href="#" (click)="scrollTo(advantages)">О нас</a>
-        </li>
-        <li>
-          <a href="#" (click)="scrollTo(order)">Оформить заказ</a>
-        </li>
-      </ul>
-      <div class="close">
-        <svg fill="#EBA8B1FF" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            <path d="M18.8,16l5.5-5.5c0.8-0.8,0.8-2,0-2.8l0,0C24,7.3,23.5,7,23,7c-0.5,0-1,0.2-1.4,0.6L16,13.2l-5.5-5.5 c-0.8-0.8-2.1-0.8-2.8,0C7.3,8,7,8.5,7,9.1s0.2,1,0.6,1.4l5.5,5.5l-5.5,5.5C7.3,21.9,7,22.4,7,23c0,0.5,0.2,1,0.6,1.4 C8,24.8,8.5,25,9,25c0.5,0,1-0.2,1.4-0.6l5.5-5.5l5.5,5.5c0.8,0.8,2.1,0.8,2.8,0c0.8-0.8,0.8-2.1,0-2.8L18.8,16z"></path>
-          </g>
-        </svg>
-      </div>
-    </nav>
-    <a href="tel:+375293689868" class="phone header-phone">
-      {{phone}}
-    </a>
-    <div class="header-trigram" id="trigram" (click)="openMenu(menu)" #trigram>
-      <img src="assets/images/trigram.png" alt="Меню">
-    </div>
-  </div>
-</header>
+<app-header [macaroons]="macaroons" [advantages]="advantages" [order]="order" [phoneNumber]="phoneNumber"></app-header>
 
 <main class="main">
   <div class="container">
@@ -46,7 +12,7 @@
       <div class="main-text">
         Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
       </div>
-      <button class="button main-button" (click)="scrollTo(chooseMacaroon)">Выбрать макарун</button>
+      <button class="button main-button" customButton [customButtonBg]="'#821328'" [customButtonBgHover]="'#69101f'" (click)="scrollTo(macaroons)">Выбрать макарун</button>
     </div>
     <div class="main-image">
       <img src="assets/images/main-macaroon.png" alt="Большой макарун">
@@ -75,42 +41,19 @@
       <img src="assets/images/macaroon-advantage.png" alt="Большой макарун">
     </div>
     <div class="advantages-items">
-      <div class="advantages-item" *ngFor="let advantage of ourAdvantages; let i = index;">
-        <div class="advantages-item-number">
-          <span>{{i + 1}}</span>
-        </div>
-        <div class="advantages-item-title">
-          <h3>{{advantage.title}}</h3>
-        </div>
-        <div class="advantages-item-text">{{advantage.description}}</div>
-      </div>
+      <advantage-component *ngFor="let advantage of ourAdvantages; let i = index;" [advantage]="advantage" [index]="i"></advantage-component>
     </div>
   </div>
 </section>
 
-<section class="products" #chooseMacaroon>
+<section class="products" #macaroons>
   <div class="container">
     <div class="products-title">
       <h2>Выберите свой макарун</h2>
     </div>
     <div class="products-items">
-      <div class="product-item" *ngFor="let productItem of productItems; let i = index;">
-        <div class="product-image">
-          <img src="assets/images/{{productItem.image}}" alt="Макарун {{i + 1}}">
-        </div>
-        <div class="product-title">
-          <h3>{{productItem.title}}</h3>
-        </div>
-        <div class="product-order">
-          <div class="product-count">
-            {{productItem.count}} шт.
-          </div>
-          <button class="button product-button" (click)="addToOrder(order, productItem)">Заказать</button>
-          <div class="product-price">
-            {{productItem.price}} руб.
-          </div>
-        </div>
-      </div>
+      <product-component *ngFor="let productItem of productItems; let i = index;" [product]="productItem" [index]="i"
+                         (addedProduct)="addToOrder(order, $event)"></product-component>
     </div>
   </div>
 </section>
@@ -140,7 +83,7 @@
       </div>
       <input type="text" class="order-input" placeholder="Ваше имя">
       <input type="tel" class="order-input" placeholder="+375 (__) ___ - __ - __">
-      <button class="button order-button">Оформить заказ</button>
+      <button class="button order-button" customButton [customButtonBg]="'#821328'" [customButtonBgHover]="'#69101f'">Оформить заказ</button>
 
       <div class="order-info-strawberry">
         <img src="assets/images/strawberry2.png" alt="Клубника">
@@ -153,49 +96,13 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="container">
-    <div class="footer-logo-rights">
-      <a href="#" class="logo">
-        <img src="assets/images/logo.png" alt="Логотип">
-      </a>
-      <div class="rights">Все права защищены, 2020</div>
-    </div>
-    <a href="tel:+375293689868" class="phone phone-extra">
-      +375 (29) 368-98-68
-    </a>
-    <div class="footer-links">
-      <a [href]="instagramLink" class="footer-icon-link">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px"
-             height="800px" viewBox="0 0 20 20" version="1.1">
-          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="Dribbble-Light-Preview" transform="translate(-340.000000, -7439.000000)" fill="#000000">
-              <g id="icons" transform="translate(56.000000, 160.000000)">
-                <path d="M289.869652,7279.12273 C288.241769,7279.19618 286.830805,7279.5942 285.691486,7280.72871 C284.548187,7281.86918 284.155147,7283.28558 284.081514,7284.89653 C284.035742,7285.90201 283.768077,7293.49818 284.544207,7295.49028 C285.067597,7296.83422 286.098457,7297.86749 287.454694,7298.39256 C288.087538,7298.63872 288.809936,7298.80547 289.869652,7298.85411 C298.730467,7299.25511 302.015089,7299.03674 303.400182,7295.49028 C303.645956,7294.859 303.815113,7294.1374 303.86188,7293.08031 C304.26686,7284.19677 303.796207,7282.27117 302.251908,7280.72871 C301.027016,7279.50685 299.5862,7278.67508 289.869652,7279.12273 M289.951245,7297.06748 C288.981083,7297.0238 288.454707,7296.86201 288.103459,7296.72603 C287.219865,7296.3826 286.556174,7295.72155 286.214876,7294.84312 C285.623823,7293.32944 285.819846,7286.14023 285.872583,7284.97693 C285.924325,7283.83745 286.155174,7282.79624 286.959165,7281.99226 C287.954203,7280.99968 289.239792,7280.51332 297.993144,7280.90837 C299.135448,7280.95998 300.179243,7281.19026 300.985224,7281.99226 C301.980262,7282.98483 302.473801,7284.28014 302.071806,7292.99991 C302.028024,7293.96767 301.865833,7294.49274 301.729513,7294.84312 C300.829003,7297.15085 298.757333,7297.47145 289.951245,7297.06748 M298.089663,7283.68956 C298.089663,7284.34665 298.623998,7284.88065 299.283709,7284.88065 C299.943419,7284.88065 300.47875,7284.34665 300.47875,7283.68956 C300.47875,7283.03248 299.943419,7282.49847 299.283709,7282.49847 C298.623998,7282.49847 298.089663,7283.03248 298.089663,7283.68956 M288.862673,7288.98792 C288.862673,7291.80286 291.150266,7294.08479 293.972194,7294.08479 C296.794123,7294.08479 299.081716,7291.80286 299.081716,7288.98792 C299.081716,7286.17298 296.794123,7283.89205 293.972194,7283.89205 C291.150266,7283.89205 288.862673,7286.17298 288.862673,7288.98792 M290.655732,7288.98792 C290.655732,7287.16159 292.140329,7285.67967 293.972194,7285.67967 C295.80406,7285.67967 297.288657,7287.16159 297.288657,7288.98792 C297.288657,7290.81525 295.80406,7292.29716 293.972194,7292.29716 C292.140329,7292.29716 290.655732,7290.81525 290.655732,7288.98792"
-                      id="instagram-[#167]">
+<app-footer [phoneNumber]="phoneNumber"></app-footer>
 
-                </path>
-              </g>
-            </g>
-          </g>
-        </svg>
-      </a>
-      <a [href]="instagramLink">Мы в Instagram</a>
-    </div>
-    <a href="tel:+375293689868" class="phone">
-      +375 (29) 368-98-68
-    </a>
-    <div class=" rights rights-extra">
-      Все права защищены, 2020
-    </div>
-  </div>
-</footer>
-
-<a href="#" [class]="(showPresent ? 'show ' : '') + 'present'">
-  <img src="assets/images/present.png" alt="Подарок">
-  <div class="present-text">
-    Оформите заказ
-    <div>и получите подарок!</div>
-    <img src="assets/images/present-text.png" alt="">
+<a href="#" [class]="(showPresent ? 'show ' : '') + 'cart'">
+  <div [class]="(orderProductsCount > 0 ? 'has-product ' : '') + 'cart-products-count'">{{orderProductsCount}}</div>
+  <img src="assets/images/cart.png" class="cart-image" alt="Корзина">
+  <div class="cart-text">
+    {{ orderAmount | currency : 'руб.' }}
+    <img src="assets/images/cart-text.png" alt="">
   </div>
 </a>

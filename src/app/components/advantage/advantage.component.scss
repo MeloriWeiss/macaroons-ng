@@ -1,0 +1,49 @@
+.advantages-item {
+  width: 220px;
+}
+
+.advantages-item-number {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background: #821328;
+  margin-bottom: 13px;
+  transition: all 0.3s ease;
+}
+
+.advantages-item-number span {
+  font-size: 60px;
+  line-height: 103px;
+  font-family: GilroyExtraBold, sans-serif;
+  color: #ffffff;
+}
+
+.advantages-item:hover .advantages-item-number {
+  background: #eba8b1;
+}
+
+.advantages-item span {
+  transition: all 0.3s ease;
+}
+
+.advantages-item:hover span {
+  color: rgb(130, 19, 40);
+}
+
+.advantages-item-title {
+  font-size: 20px;
+  font-family: GilroyExtraBold, sans-serif;
+  color: rgb(51, 25, 7);
+  margin-bottom: 20px;
+}
+
+.advantages-item-text {
+  font-size: 15px;
+  font-family: GilroyMedium, sans-serif;
+  color: rgb(51, 25, 7);
+  line-height: 1.333;
+}
+
+@import "advantage-adaptive.component";

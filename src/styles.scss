@@ -59,6 +59,13 @@ h2 {
   box-shadow: 0 5px 9px 1px rgba(130, 19, 40, 0.5);
 }
 
+.phone {
+  font-size: 16px;
+  font-family: GilroyBold, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1330px) {
   .container {
     padding-left: 20px;
@@ -70,5 +77,15 @@ h2 {
   .container {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  .logo {
+    display: inline-block;
+    font-size: 0;
+    vertical-align: middle;
+  }
+
+  .phone {
+    display: none;
   }
 }

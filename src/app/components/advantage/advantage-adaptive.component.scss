@@ -1,0 +1,22 @@
+@media screen and (max-width: 1330px) {
+  .advantages-item {
+    margin-bottom: 80px;
+  }
+
+  .advantages-item-number {
+    position: relative;
+    left: calc(50% - 36px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .advantages-item {
+    width: 165px;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .advantages-item {
+    width: 220px;
+  }
+}
